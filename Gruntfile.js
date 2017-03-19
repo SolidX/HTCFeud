@@ -4,14 +4,14 @@ module.exports = function (grunt) {
         copy:{
             build:{
                 cwd: 'src',
-                src: ['**'],
+                src: ['*.html', '*.php', '*.htm', 'images/*'],
                 dest: 'dist',
                 expand: true
             }
         },
         clean:{
             build:{
-                src: 'dist/*'
+                src: ['dist/*', 'tmp/*']
             }
         },
         useminPrepare: {
@@ -24,6 +24,17 @@ module.exports = function (grunt) {
             build: {
                 dest: 'dist/app.css',
                 src: 'tmp/app.css'
+            }
+        },
+        uglify: {
+            build: {
+                options: {
+                    preserveComments: 'some'
+                },
+                files: [{
+                    dest: 'dist/app.js',
+                    src: 'src/js/*.js'
+                }]                
             }
         },
         concat: {
@@ -46,6 +57,6 @@ module.exports = function (grunt) {
     grunt.registerTask(
         'build',
         'Compiles all the assets and copies the files to the build directory.',
-        [ 'clean', 'copy', 'concat', 'cssmin', 'usemin' ]
+        [ 'clean', 'copy', 'concat', 'uglify', 'cssmin', 'usemin' ]
     );
 };

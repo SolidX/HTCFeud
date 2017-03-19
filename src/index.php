@@ -12,6 +12,9 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/skeleton.css">
         <!-- endbuild -->
+        <!-- build:js app.js -->
+        <script type="text/javascript" src="js/zepto.js"></script>
+        <!-- endbuild -->
     </head>
     <body>
         <?php
